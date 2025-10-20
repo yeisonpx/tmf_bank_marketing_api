@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "imf-m7-api-collection",
+		"name": "IMF M7 - API Predicción de Ventas y Contratación",
+		"description": "Colección de endpoints para la API de predicción de ventas y contratación de clientes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Información de la API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						""
+					]
+				},
+				"description": "Obtiene información general de la API y la lista de endpoints disponibles"
+			},
+			"response": []
+		},
+		{
+			"name": "Estado de Salud",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"health"
+					]
+				},
+				"description": "Verifica el estado de la API y si los modelos están cargados correctamente"
+			},
+			"response": []
+		},
+		{
+			"name": "Predicción de Ventas - 7 días",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"days\": 7\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/predict/sales",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"predict",
+						"sales"
+					]
+				},
+				"description": "Predice las ventas futuras para los próximos 7 días"
+			},
+			"response": []
+		},
+		{
+			"name": "Predicción de Ventas - 30 días",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"days\": 30\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/predict/sales",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"predict",
+						"sales"
+					]
+				},
+				"description": "Predice las ventas futuras para los próximos 30 días"
+			},
+			"response": []
+		},
+		{
+			"name": "Predicción de Contratación - Cliente con alta probabilidad",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 35,\n    \"job\": \"management\",\n    \"marital\": \"married\",\n    \"education\": \"tertiary\",\n    \"default\": \"no\",\n    \"balance\": 3500,\n    \"housing\": \"yes\",\n    \"loan\": \"no\",\n    \"contact\": \"cellular\",\n    \"day\": 15,\n    \"month\": \"may\",\n    \"campaign\": 1,\n    \"pdays\": -1,\n    \"previous\": 0,\n    \"poutcome\": \"unknown\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/predict/contract",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"predict",
+						"contract"
+					]
+				},
+				"description": "Predice si un cliente con perfil favorable contratará el producto"
+			},
+			"response": []
+		},
+		{
+			"name": "Predicción de Contratación - Cliente joven técnico",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 28,\n    \"job\": \"technician\",\n    \"marital\": \"single\",\n    \"education\": \"secondary\",\n    \"default\": \"no\",\n    \"balance\": 1500,\n    \"housing\": \"yes\",\n    \"loan\": \"no\",\n    \"contact\": \"cellular\",\n    \"day\": 20,\n    \"month\": \"jun\",\n    \"campaign\": 2,\n    \"pdays\": -1,\n    \"previous\": 0,\n    \"poutcome\": \"unknown\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/predict/contract",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"predict",
+						"contract"
+					]
+				},
+				"description": "Predice la probabilidad de contratación para un cliente joven trabajador técnico"
+			},
+			"response": []
+		},
+		{
+			"name": "Predicción de Contratación - Cliente con contacto previo exitoso",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 42,\n    \"job\": \"admin.\",\n    \"marital\": \"married\",\n    \"education\": \"secondary\",\n    \"default\": \"no\",\n    \"balance\": 2800,\n    \"housing\": \"yes\",\n    \"loan\": \"no\",\n    \"contact\": \"cellular\",\n    \"day\": 10,\n    \"month\": \"may\",\n    \"campaign\": 1,\n    \"pdays\": 180,\n    \"previous\": 3,\n    \"poutcome\": \"success\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/predict/contract",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"predict",
+						"contract"
+					]
+				},
+				"description": "Predice la probabilidad de contratación para un cliente con historial de contacto exitoso previo"
+			},
+			"response": []
+		},
+		{
+			"name": "Predicción de Contratación - Cliente retirado",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 68,\n    \"job\": \"retired\",\n    \"marital\": \"married\",\n    \"education\": \"primary\",\n    \"default\": \"no\",\n    \"balance\": 5000,\n    \"housing\": \"yes\",\n    \"loan\": \"no\",\n    \"contact\": \"cellular\",\n    \"day\": 5,\n    \"month\": \"aug\",\n    \"campaign\": 1,\n    \"pdays\": -1,\n    \"previous\": 0,\n    \"poutcome\": \"unknown\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/predict/contract",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"predict",
+						"contract"
+					]
+				},
+				"description": "Predice la probabilidad de contratación para un cliente retirado con buen balance"
+			},
+			"response": []
+		},
+		{
+			"name": "Predicción de Contratación - Estudiante",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 22,\n    \"job\": \"student\",\n    \"marital\": \"single\",\n    \"education\": \"secondary\",\n    \"default\": \"no\",\n    \"balance\": 200,\n    \"housing\": \"no\",\n    \"loan\": \"yes\",\n    \"contact\": \"cellular\",\n    \"day\": 12,\n    \"month\": \"sep\",\n    \"campaign\": 3,\n    \"pdays\": -1,\n    \"previous\": 0,\n    \"poutcome\": \"unknown\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/predict/contract",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"predict",
+						"contract"
+					]
+				},
+				"description": "Predice la probabilidad de contratación para un estudiante joven con bajo balance"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}
